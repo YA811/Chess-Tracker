@@ -12,3 +12,14 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+class Game:
+    def __init__(self, opponent_name, breed, description, age):
+        self.name = opponent_name
+        self.date = date
+        self.result = result
+        self.note = note
+
+def game_index(request):
+    cats = Cat.objects.filter(user=request.user)
+    return render(request, 'game/index.html', {'game': game})
