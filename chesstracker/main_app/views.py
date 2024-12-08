@@ -1,9 +1,11 @@
 # main_app/views.py
 
-from django.shortcuts import render
-
 # Import HttpResponse to send text-based responses
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .models import Game, TrainingSession
+from .forms import GameForm, TrainingSessionForm
+
 
 # Define the home view function
 def home(request):
@@ -13,13 +15,28 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-class Game:
-    def __init__(self, opponent_name, breed, description, age):
-        self.name = opponent_name
-        self.date = date
-        self.result = result
-        self.note = note
+def add_game(request):
+    if request.method == 'POST':
+        form = GameForm(request.POST)
+        if form.is_valid():
+            game = form.save(commit=False)
+            game.user = request.user
+            game.save()
+            return redirect('home')
+    else:
+        form = GameForm()
+    return render(request, 'add_game.html', {'form': form})
 
-def game_index(request):
-    cats = Cat.objects.filter(user=request.user)
-    return render(request, 'game/index.html', {'game': game})
+
+def add_training_session(request):
+    if request.method == 'POST':
+        form = TrainingSessionForm(request.POST)
+        if form.is_valid():
+            session = form.save(commit=False)
+            session.user = request.user
+            session.save()
+            return redirect('home')
+    else:
+        form = TrainingSessionForm()
+    return render(request, 'add_training_session.html', {'form': form})
+
