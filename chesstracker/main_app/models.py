@@ -2,12 +2,13 @@ from django.db import models
 # from django.contrib.auth.models import User
 
 class TrainingSession(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    session_date = models.DateField(auto_now_add=True)
-    activity_type = models.CharField(max_length=50, choices=[('game', 'Game')])
-    duration = models.IntegerField()  # Duration of the session in minutes
-    rating = models.IntegerField(default=0)  # Rating change from the session
+    activity_type = models.CharField(max_length=100)
+    duration = models.IntegerField()  # Duration in minutes
+    rating = models.IntegerField()    # Rating change (could be a number)
+    session_date = models.DateTimeField(auto_now_add=True)  # Automatically set the date and time of the session
 
+    def __str__(self):
+        return self.activity_type
 class Game(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     session = models.ForeignKey(TrainingSession, on_delete=models.CASCADE)
