@@ -1,17 +1,10 @@
-<!-- home.html -->
 
 {% extends 'base.html' %} 
 {% block content %}
-<h1>Welcome, user</h1>
-<h2>Your Games</h2>
+<h1>Your Games</h1>
 <ul>
   {% for game in games %}
     <li>{{ game.opponent }} - {{ game.time_control }} - {{ game.result }} - {{ game.pgn }}</li>
   {% endfor %}
-</ul>
-
-<h2>Your Training Sessions</h2>
-<ul>
-  <!-- Your training sessions content -->
 </ul>
 {% endblock %}
