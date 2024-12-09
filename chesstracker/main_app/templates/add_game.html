@@ -5,7 +5,13 @@
 {% block content %}
 
   <h1>Game List</h1>
-
+  <a href="{% url 'add_game' %}" class="btn">Add Game</a>
+    <h1>Add a New Game</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Add Game</button>
+    </form>
 <section class="card-container">
   {% for game in games %}
     <div class="card">
