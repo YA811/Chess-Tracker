@@ -1,24 +1,9 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block head %}
-{% endblock %} 
+{% extends 'base.html' %}
 {% block content %}
-
-  <h1>Training List</h1>
-
-<section class="card-container">
-  {% for traning in tranings %}
-    <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          
-        </div>
-        <h2 class="card-title">{{ training.activity_type }}</h2>
-        <p>Played on {{ training.duration }}</p>
-        <p>Result: {{ training.rating }}</p>
-      </div>
-    </div>
-  {% endfor %}
-</section>
-
+  <h1>Add Training Session</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Training Session</button>
+  </form>
 {% endblock %}

@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Game, TrainingSession
 from .forms import GameForm, TrainingSessionForm
+from django.contrib import messages
 
 def home(request):
     return render(request, 'home.html')
@@ -35,17 +36,21 @@ def add_game(request):
         form = GameForm()
     return render(request, 'add_game.html', {'form': form})
 
-
-
-
 def add_training_session(request):
     if request.method == 'POST':
         form = TrainingSessionForm(request.POST)
         if form.is_valid():
-            session = form.save(commit=False)
-            session.user = request.user
-            session.save()
-            return redirect('home')
+            form.save()  # Save the form without attaching a user
+            return redirect('training_sessions')  # Redirect to the training sessions list page
     else:
         form = TrainingSessionForm()
+    
     return render(request, 'add_training_session.html', {'form': form})
+
+def training_sessions(request):
+    trainings = TrainingSession.objects.all()  # Fetch all training sessions
+    return render(request, 'training_sessions.html', {'trainings': trainings})
+
+
+
+
