@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <h1>Training List</h1>
+  <a href="{% url 'add_training_session' %}" class="btn">Add Training Session</a>
+
+  <section class="card-container">
+    {% for training in trainings %}
+      <div class="card">
+        <div class="card-content">
+          <div class="card-img-container"></div>
+          <h2 class="card-title">{{ training.activity_type }}</h2>
+          <p>Duration: {{ training.duration }} minutes</p>
+          <p>Rating Change: {{ training.rating }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+{% endblock %}
