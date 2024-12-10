@@ -14,6 +14,9 @@
         <p>PGN: {{ game.pgn }}</p>
       </div>
     </div>
+    <li>
+      <a href="{% url 'game_details' game.id %}">Details</a> 
+  </li>
   {% endfor %}
-</section>
+</ul>
 {% endblock %}
