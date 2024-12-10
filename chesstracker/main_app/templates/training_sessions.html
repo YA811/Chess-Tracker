@@ -11,8 +11,9 @@
         <div class="card-content">
           <div class="card-img-container"></div>
           <h2 class="card-title">{{ training.activity_type }}</h2>
-          <p>Duration: {{ training.duration }} minutes</p>
+          <p>Duration: {{ training.duration }} Hours</p>
           <p>Rating Change: {{ training.rating }}</p>
+          <a href="{% url 'training_session_detail' training.id %}" class="card-link">View Details</a>
         </div>
       </div>
     {% endfor %}
