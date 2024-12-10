@@ -1,0 +1,8 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h1>Training Session Details</h1>
+<p><strong>Activity Type:</strong> {{ session.activity_type }}</p>
+<p><strong>Duration:</strong> {{ session.duration }} minutes</p>
+<p><strong>Rating Change:</strong> {{ session.rating }}</p>
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

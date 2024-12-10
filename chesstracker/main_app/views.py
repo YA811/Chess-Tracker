@@ -1,7 +1,7 @@
 # main_app/views.py
 
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Game, TrainingSession
 from .forms import GameForm, TrainingSessionForm
 from django.contrib import messages
@@ -40,17 +40,22 @@ def add_training_session(request):
     if request.method == 'POST':
         form = TrainingSessionForm(request.POST)
         if form.is_valid():
-            form.save()  # Save the form without attaching a user
-            return redirect('training_sessions')  # Redirect to the training sessions list page
+            form.save()  
+            return redirect('training_sessions')
     else:
         form = TrainingSessionForm()
     
     return render(request, 'add_training_session.html', {'form': form})
 
 def training_sessions(request):
-    trainings = TrainingSession.objects.all()  # Fetch all training sessions
+    trainings = TrainingSession.objects.all()  
     return render(request, 'training_sessions.html', {'trainings': trainings})
 
+def game_details(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    return render(request, 'game_details.html', {'game': game})
 
-
+def training_session_detail(request, session_id):
+    session = get_object_or_404(TrainingSession, id=session_id)
+    return render(request, 'training_session_detail.html', {'session': session})
 

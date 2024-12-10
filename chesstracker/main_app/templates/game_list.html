@@ -5,6 +5,9 @@
 <ul>
   {% for game in games %}
     <li>{{ game.opponent }} - {{ game.time_control }} - {{ game.result }} - {{ game.pgn }}</li>
+    <li>
+      <a href="{% url 'game_details' game.id %}">Details</a> 
+  </li>
   {% endfor %}
 </ul>
 <a href="{% url 'add_game' %}" class="btn">Add new Game</a>
