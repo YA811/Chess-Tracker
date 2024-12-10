@@ -1,10 +1,11 @@
 # main_app/views.py
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Game, TrainingSession
 from .forms import GameForm, TrainingSessionForm
 from django.contrib import messages
+
 
 def home(request):
     return render(request, 'home.html')
@@ -59,3 +60,38 @@ def training_session_detail(request, session_id):
     session = get_object_or_404(TrainingSession, id=session_id)
     return render(request, 'training_session_detail.html', {'session': session})
 
+def delete_training_session(request, session_id):
+    session = get_object_or_404(TrainingSession, id=session_id)
+    if request.method == 'POST':
+        session.delete()
+        return redirect('training_sessions')
+    return HttpResponseNotAllowed(['POST'])
+
+def delete_game(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    if request.method == 'POST':
+        game.delete()
+        return redirect('your_games') 
+    return HttpResponseNotAllowed(['POST'])
+
+def update_training_session(request, session_id):
+    session = get_object_or_404(TrainingSession, id=session_id)
+    if request.method == 'POST':
+        form = TrainingSessionForm(request.POST, instance=session)
+        if form.is_valid():
+            form.save()
+            return redirect('training_session_detail', session_id=session.id)
+    else:
+        form = TrainingSessionForm(instance=session)
+    return render(request, 'update_training_session.html', {'form': form, 'session': session})
+
+def update_game(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    if request.method == 'POST':
+        form = GameForm(request.POST, instance=game) 
+        if form.is_valid():
+            form.save()  
+            return redirect('game_details', game_id=game.id) 
+    else:
+        form = GameForm(instance=game) 
+    return render(request, 'update_game.html', {'form': form, 'game': game})

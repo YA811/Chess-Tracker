@@ -3,9 +3,9 @@ from django.db import models
 
 class TrainingSession(models.Model):
     activity_type = models.CharField(max_length=100)
-    duration = models.IntegerField()  # Duration in minutes
-    rating = models.IntegerField()    # Rating change (could be a number)
-    session_date = models.DateTimeField(auto_now_add=True)  # Automatically set the date and time of the session
+    duration = models.IntegerField() 
+    rating = models.IntegerField()    
+    session_date = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
         return self.activity_type

@@ -6,5 +6,10 @@
     <p><strong>Result:</strong> {{ game.result }}</p>
     <p><strong>PGN:</strong></p>
     <pre>{{ game.pgn }}</pre>
+    <a href="{% url 'update_game' game.id %}" class="btn btn-primary">Update</a>
+    <form method="post" action="{% url 'delete_game' game.id %}" >
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
     <a href="{% url 'home' %}">Back to Home</a>
     {% endblock %}
