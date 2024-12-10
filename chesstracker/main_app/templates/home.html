@@ -1,15 +1,33 @@
+<!-- home.html -->
+
 {% extends 'base.html' %} 
 {% block content %}
-<h1>Welcome, user</h1>
-<h2>Your Games</h2>
-<ul>
-  {% for game in games %}
-    <li>{{ game.opponent }} - {{ game.time_control }} - {{ game.result }} - {{ game.pgn }}</li>
-  {% endfor %}
-</ul>
+  <h1>Welcome, {{ user.username }}</h1>
+  
+  <h2>Your Games</h2>
+  <ul class="game-list">
+    {% for game in games %}
+      <li>
+        <strong>Opponent:</strong> {{ game.opponent }}<br>
+        <strong>Time Control:</strong> {{ game.time_control }}<br>
+        <strong>Result:</strong> {{ game.result }}<br>
+        <strong>PGN:</strong> {{ game.pgn }}
+      </li>
+    {% empty %}
+      <li>No games available</li>
+    {% endfor %}
+  </ul>
 
-<h2>Your Training Sessions</h2>
-<ul>
-  <!-- Your training sessions content -->
-</ul>
+  <h2>Your Training Sessions</h2>
+  <ul class="training-list">
+    {% for session in training_sessions %}
+      <li>
+        <strong>Topic:</strong> {{ session.topic }}<br>
+        <strong>Date:</strong> {{ session.date }}<br>
+        <strong>Duration:</strong> {{ session.duration }} minutes
+      </li>
+    {% empty %}
+      <li>No training sessions available</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

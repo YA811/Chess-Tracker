@@ -1,10 +1,13 @@
+<!-- base.html -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
     <title>Chess Tracker</title>
     {% block head %} 
     {% endblock %}
@@ -13,7 +16,7 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="" alt="" />
+          <img src="{% static 'images/logo.png' %}" alt="Chess Tracker Logo" />
         </a>
       </div>
       <nav>
@@ -26,8 +29,11 @@
       </nav>
     </header>
     <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
+      {% block content %} 
+      {% endblock %}
+    </main>
+    <footer>
+      <p>&copy; 2024 Chess Tracker. All rights reserved.</p>
+    </footer>
   </body>
 </html>
