@@ -1,5 +1,3 @@
-# main_app/views.py
-
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Game, TrainingSession
@@ -40,15 +38,15 @@ def add_training_session(request):
     if request.method == 'POST':
         form = TrainingSessionForm(request.POST)
         if form.is_valid():
-            form.save()  # Save the form without attaching a user
-            return redirect('training_sessions')  # Redirect to the training sessions list page
+            form.save() 
+            return redirect('training_sessions') 
     else:
         form = TrainingSessionForm()
     
     return render(request, 'add_training_session.html', {'form': form})
 
 def training_sessions(request):
-    trainings = TrainingSession.objects.all()  # Fetch all training sessions
+    trainings = TrainingSession.objects.all()
     return render(request, 'training_sessions.html', {'trainings': trainings})
 
 
