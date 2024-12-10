@@ -31,7 +31,7 @@ def add_game(request):
             game.session = session
             game.save()
 
-            return redirect('home')
+            return redirect('your_games')
     else:
         form = GameForm()
     return render(request, 'add_game.html', {'form': form})

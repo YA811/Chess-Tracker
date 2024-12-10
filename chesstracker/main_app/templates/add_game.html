@@ -10,7 +10,7 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <a href="{% url 'add_game' %}" class="btn">Add Game</a>
+    <button type="submit">Add new Game</button>
   </form>
  
 {% endblock %}

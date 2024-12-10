@@ -7,4 +7,5 @@
     <li>{{ game.opponent }} - {{ game.time_control }} - {{ game.result }} - {{ game.pgn }}</li>
   {% endfor %}
 </ul>
+<a href="{% url 'add_game' %}" class="btn">Add new Game</a>
 {% endblock %}
