@@ -15,7 +15,7 @@ def about(request):
 
 def game_list(request):
     games = Game.objects.all()
-    return render(request, 'add_game.html', {'games': games})
+    return render(request, 'game_list.html', {'games': games})
 
 
 def add_game(request):
