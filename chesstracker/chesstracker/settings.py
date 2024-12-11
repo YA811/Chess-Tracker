@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'chesstracker.wsgi.application'
 if not 'ON_HEROKU' in os.environ:
     DEBUG = True
 
+if 'ON_HEROKU' in os.environ:
     DATABASES = {
         "default": dj_database_url.config(
             env='DATABASE_URL',
