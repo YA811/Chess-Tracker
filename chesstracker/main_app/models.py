@@ -17,3 +17,6 @@ class Game(models.Model):
     time_control = models.CharField(max_length=50, choices=[('blitz', 'Blitz'), ('rapid', 'Rapid'), ('classical', 'Classical')])
     result = models.CharField(max_length=10, choices=[('win', 'Win'), ('loss', 'Loss'), ('draw', 'Draw')])
     pgn = models.TextField()  # PGN of the game for review
+
+    def __str__(self):
+        return f"{self.opponent} vs. {self.game_date}"
