@@ -1,14 +1,22 @@
-
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 <h1>Your Games</h1>
-<ul>
+<a href="{% url 'add_game' %}" class="btn">Add Game</a>
+
+<section class="card-container">
   {% for game in games %}
-    <li>{{ game.opponent }} - {{ game.time_control }} - {{ game.result }} - {{ game.pgn }}</li>
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container"></div>
+        <h2 class="card-title">{{ game.opponent }}</h2>
+        <p>Time Control: {{ game.time_control }}</p>
+        <p>Result: {{ game.result }}</p>
+        <p>PGN: {{ game.pgn }}</p>
+      </div>
+    </div>
     <li>
       <a href="{% url 'game_details' game.id %}">Details</a> 
   </li>
   {% endfor %}
 </ul>
-<a href="{% url 'add_game' %}" class="btn">Add new Game</a>
 {% endblock %}
