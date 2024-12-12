@@ -71,7 +71,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #e67e22;
+    color: #41403f;
 }
 
 /* Main Content Styles */
@@ -115,7 +115,7 @@ footer p {
 /* Button Styles */
 .btn {
     display: inline-block;
-    background-color: #e67e22;
+    background-color: #3e3d3d;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -126,7 +126,7 @@ footer p {
 }
 
 .btn:hover {
-    background-color: #d35400;
+    background-color: #444343;
 }
 
 /* Game List Styles */
@@ -183,7 +183,7 @@ footer p {
 
 .card .game-rating {
     font-size: 1rem;
-    color: #f39c12;
+    color: #444343;
     font-weight: bold;
 }
 

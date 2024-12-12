@@ -73,7 +73,7 @@ button[type="submit"]:hover {
 /* Form Validation and Error Messages */
 input:invalid,
 textarea:invalid {
-    border-color: #e74c3c;
+    border-color: #424141;
 }
 
 .form-error {

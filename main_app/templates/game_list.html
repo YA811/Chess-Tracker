@@ -13,10 +13,11 @@
         <p>Result: {{ game.result }}</p>
         <p>PGN: {{ game.pgn }}</p>
       </div>
-    </div>
+    <div>
     <li>
       <a href="{% url 'game_details' game.id %}">Details</a> 
   </li>
+</div>
   {% endfor %}
 </ul>
 {% endblock %}
