@@ -2,7 +2,7 @@
 
 # screenshot of the app
 
-<img src="">
+<img src="/plan/screenshot.png">
 
 # Idea description
 
@@ -91,4 +91,12 @@ chessTracker lets players keep track of their games, puzzles, and training sessi
         - Save the training session as a TrainingSession object with the specified attributes (focus_area, duration, training_notes, date_trained).
         - Store the new TrainingSession object in the User’s list of training sessions.
 
-        
+# Future work 
+- adding a game analysis for the games so we can analyze them.
+- adding a puzzle model so the user can practice there.
+
+# Technologies used
+- django, css, html
+
+# app link
+- https://chesstracker-7009f5cf254b.herokuapp.com/your-games/
